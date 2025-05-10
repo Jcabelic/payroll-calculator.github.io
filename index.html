@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-5">
+        <h1 class="text-2xl font-bold mb-5">Payroll Calculator</h1>
+        <form id="calculator-form" class="space-y-4">
+            <div>
+                <label for="basicIncome" class="block text-sm">Basic Income</label>
+                <input type="number" id="basicIncome" class="mt-1 p-2 border rounded w-full" required>
+            </div>
+            <div>
+                <label for="deductions" class="block text-sm">Deductions</label>
+                <input type="number" id="deductions" class="mt-1 p-2 border rounded w-full" required>
+            </div>
+            <div>
+                <label for="otherIncome" class="block text-sm">Other Taxable Income</label>
+                <input type="number" id="otherIncome" class="mt-1 p-2 border rounded w-full" required>
+            </div>
+            <div>
+                <label for="paymentFrequency" class="block text-sm">Payment Frequency</label>
+                <select id="paymentFrequency" class="mt-1 p-2 border rounded w-full" required>
+                    <option value="monthly">Monthly</option>
+                    <option value="semi-monthly">Semi-Monthly</option>
+                </select>
+            </div>
+            <button type="submit" class="mt-4 bg-blue-600 text-white p-2 rounded">Calculate</button>
+        </form>
+        <div id="results" class="mt-5 hidden">
+            <h2 class="text-xl font-bold">Results</h2>
+            <p id="resultText"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="matrix-tables/SSS.js"></script>
+</body>
+</html>
