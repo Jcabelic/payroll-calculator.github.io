@@ -27,4 +27,27 @@ document.getElementById('calculator-form').addEventListener('submit', function(e
 
 
 
-  
+
+const paymentFrequency = document.getElementById('paymentFrequency');
+const paymentBatch = document.getElementById('paymentBatch');
+const batchContainer = document.getElementById('batchContainer');
+const payrollB = document.getElementById('payrollB');
+
+paymentFrequency.addEventListener('change', () => {
+  if (paymentFrequency.value === 'semi-monthly') {
+    batchContainer.classList.remove('hidden');
+  } else {
+    batchContainer.classList.add('hidden');
+    payrollB.classList.add('hidden'); // Hide Payroll B if switching back to monthly
+  }
+});
+
+paymentBatch.addEventListener('change', () => {
+  if (paymentBatch.value === 'B') {
+    payrollB.classList.remove('hidden');
+  } else {
+    payrollB.classList.add('hidden');
+  }
+});
+
+
