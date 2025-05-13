@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Payroll Calculator</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Payroll Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body class="bg-gray-100">
-  <div class="min-h-screen flex flex-col items-center justify-start p-10 space-y-6">
+    <header class="w-full bg-blue-700 text-white py-6 shadow">
+    <div class="max-w-5xl mx-auto px-4">
+        <h1 class="text-3xl font-bold">Payroll Calculator</h1>
+        <p class="text-sm mt-1 text-blue-100">Accurate and quick salary breakdowns based on payment frequency and income components.</p>
+    </div>
+    </header>
+    <section class="bg-white w-full py-8 px-4 shadow-sm">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-xl font-semibold mb-2">About This Tool</h2>
+            <p class="text-gray-700">
+            This payroll calculator helps you compute your earnings based on either monthly or semi-monthly payment schedules. 
+            Input your basic income, deductions, and other taxable income to get your estimated net pay instantly.
+            </p>
+        </div>
+    </section>
 
-    <!-- Payment Frequency + Batch Container -->
+  <div class="min-h-screen flex flex-col items-center justify-start p-10 space-y-6">
+    <!-- Payment Frequency + Batch Container (unchanged) ... -->
     <div class="bg-white p-6 rounded shadow-lg max-w-md w-full">
       <div>
         <label for="paymentFrequency" class="block text-sm mb-1">Payment Frequency</label>
         <select id="paymentFrequency" class="p-2 border rounded w-full" required>
-          <option value="monthly">Monthly</option>
-          <option value="semi-monthly">Semi-Monthly</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Semimonthly">Semi-Monthly</option>
         </select>
       </div>
       <div id="batchContainer" class="mt-4 hidden">
@@ -27,36 +42,38 @@
         </select>
       </div>
     </div>
-
-    <!-- Payroll Cards -->
-    <div class="flex flex-col lg:flex-row gap-5 items-start justify-center w-full max-w-5xl">
-
+    <!-- Modified Payroll Cards Container -->
+    <div class="flex flex-col lg:flex-row gap-5 items-stretch justify-center w-full max-w-5xl">
       <!-- Payroll A -->
-      <div class="bg-white p-8 rounded shadow-lg max-w-md w-full">
-        <h1 class="text-2xl font-bold mb-5">Payroll Income A</h1>
-        <form id="calculator-form-A" class="space-y-4">
-          <div>
-            <label for="basicIncomeA" class="block text-sm">Basic Income</label>
-            <input type="number" id="basicIncomeA" class="mt-1 p-2 border rounded w-full" required />
-          </div>
-          <div>
-            <label for="deductionsA" class="block text-sm">Deductions</label>
-            <input type="number" id="deductionsA" class="mt-1 p-2 border rounded w-full" required />
-          </div>
-          <div>
-            <label for="otherIncomeA" class="block text-sm">Other Taxable Income</label>
-            <input type="number" id="otherIncomeA" class="mt-1 p-2 border rounded w-full" required />
-          </div>
-          <button id = "calculateButtonA" type="submit" class="mt-4 bg-blue-600 text-white p-2 rounded w-full">Calculate</button>
-        </form>
-        <div id="resultsA" class="mt-5 hidden">
-          <h2 class="text-xl font-bold">Results</h2>
-          <p id="resultTextA"></p>
-        </div>
+        <div class="bg-white p-8 rounded shadow-lg flex-1">
+            <!-- ... (keep existing Payroll A content) ... -->
+            <!-- <div class="bg-white p-8 rounded shadow-lg max-w-md w-full"> -->
+            <h1 class="text-2xl font-bold mb-5">Payroll Income A</h1>
+            <form id="calculator-form-A" class="space-y-4">
+            <div>
+                <label for="basicIncomeA" class="block text-sm">Basic Income</label>
+                <input type="number" id="basicIncomeA" class="mt-1 p-2 border rounded w-full" required />
+            </div>
+            <div>
+                <label for="deductionsA" class="block text-sm">Deductions</label>
+                <input type="number" id="deductionsA" class="mt-1 p-2 border rounded w-full" required />
+            </div>
+            <div>
+                <label for="otherIncomeA" class="block text-sm">Other Taxable Income</label>
+                <input type="number" id="otherIncomeA" class="mt-1 p-2 border rounded w-full" required />
+            </div>
+            <button id = "calculateButtonA" type="submit" class="mt-4 bg-blue-600 text-white p-2 rounded w-full">Calculate</button>
+            </form>
+            <div id="resultsA" class="mt-5 hidden">
+            <h2 class="text-xl font-bold">Results</h2>
+            <p id="resultTextA"></p>
+            </div>
+        <!-- </div> -->
       </div>
 
       <!-- Payroll B -->
-      <div id="payrollB" class="bg-white p-8 rounded shadow-lg max-w-md w-full hidden">
+      <div id="payrollB" class="bg-white p-8 rounded shadow-lg flex-1 hidden">
+        <!-- ... (keep existing Payroll B content) ... -->
         <h1 class="text-2xl font-bold mb-5">Payroll Income B</h1>
         <form id="calculator-form-B" class="space-y-4">
           <div>
@@ -78,11 +95,10 @@
           <p id="resultTextB"></p>
         </div>
       </div>
-
     </div>
   </div>
-
-  <script src ="script.js"> </script>
-  <script src = "SSS.js"> </script>
+  <script src = "script.js"></script>
+  <script src = "matrix-tables/SSS.js"></script>
+  <script src = "matrix-tables/WTAX.js"></script>
 </body>
 </html>
